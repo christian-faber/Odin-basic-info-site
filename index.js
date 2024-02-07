@@ -5,12 +5,10 @@ const path = require("path");
 const server = http.createServer((req, res) => {
   let filePath = "." + req.url + ".html";
 
-  // Set default to index.html if no specific page is requested
   if (filePath === "./.html") {
     filePath = "./index.html";
   }
 
-  // Read the requested file
   fs.readFile(filePath, (err, content) => {
     if (err) {
       fs.readFile("./404.html", (err, content) => {
